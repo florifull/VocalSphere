@@ -29,8 +29,10 @@ Replace `<your-username>` with your GitHub username.
    ```
 
 3. **Install Backend Dependencies**:
+   After setting up your virtual environment, you can install all the required packages by running:
+
    ```bash
-   pip install Flask Flask-PyMongo Flask-JWT-Extended python-dotenv
+   pip install -r requirements.txt
    ```
 
 4. **Create the .env File**:
