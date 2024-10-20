@@ -1,42 +1,42 @@
-import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import os
 
-# Load environment variables from .env file
+# Load environment variables from .env
 load_dotenv()
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Get MongoDB URI from .env
+# Connect to MongoDB using the URI from .env
 mongo_uri = os.getenv("MONGO_URI")
-
-# Connect to MongoDB using pymongo
 client = MongoClient(mongo_uri)
+db = client["social_media_app"]
+users_collection = db["users"]
 
-# Specify the database name
-database_name = 'social_media_app'
-db = client[database_name]
+# Add CORS headers manually
+@app.after_request
+def apply_cors(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS, PUT, DELETE"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    return response
 
-# Access the 'users' collection in the database
-users_collection = db['users']
-
-# Route to add data to the MongoDB collection
+# Route to handle adding data
 @app.route('/add', methods=['POST'])
 def add_data():
-    data = request.json  # Get JSON data from request body
-    users_collection.insert_one(data)  # Insert data into 'users' collection
-    return jsonify({"message": "Data added to MongoDB"}), 201
+    if request.method == 'OPTIONS':
+        return make_response(jsonify({'status': 'OK'}), 200)
 
-# Route to retrieve all users from MongoDB collection
+    data = request.json
+    users_collection.insert_one(data)
+    return jsonify({'message': 'User added successfully'}), 201
+
+# Route to get all users
 @app.route('/users', methods=['GET'])
 def get_users():
-    users = list(users_collection.find())  # Retrieve all users
-    for user in users:
-        user['_id'] = str(user['_id'])  # Convert ObjectId to string for JSON serialization
+    users = list(users_collection.find({}, {'_id': 0}))
     return jsonify(users), 200
 
-# Run Flask app
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
