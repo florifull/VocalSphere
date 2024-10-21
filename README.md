@@ -19,15 +19,17 @@ Replace `<your-username>` with your GitHub username.
    cd social_media_app/backend
    ```
 
-2. **Create and Activate the Virtual Environment**:
+2. **Create**:
    ```bash
    python -m venv venv
+   ```
+2. **Activate the Virtual Environment (Should be done every session to run the code)**:
+   ```bash
    # On macOS/Linux
    source venv/bin/activate
    # On Windows
    .\venv\Scripts\activate
    ```
-
 3. **Install Backend Dependencies**:
    ```bash
    pip install -r requirements.txt
