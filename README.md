@@ -2,12 +2,14 @@
 
 ## Getting Started
 
+### Start by forking the repository
+
 ### Step 1: Clone the Repository
 
 Open your terminal and run the following command to clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/social_media_app.git
+git clone https://github.com/<your-username>/VocalSphere
 ```
 
 Replace `<your-username>` with your GitHub username.
@@ -16,7 +18,7 @@ Replace `<your-username>` with your GitHub username.
 
 1. **Navigate to the Backend Directory**:
    ```bash
-   cd social_media_app/backend
+   cd VocalSphere/backend
    ```
 
 2. **Create the Virtual Environment**:
@@ -62,7 +64,7 @@ Replace `<your-username>` with your GitHub username.
 
 2. **Navigate to the Frontend Directory**:
    ```bash
-   cd social_media_app/frontend
+   cd VocalSphere/frontend
    ```
 
 3. **Install Frontend Dependencies**:
