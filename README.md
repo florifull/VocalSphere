@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-### Start by forking the repository
+### Start by Forking the Repository
 
 ### Step 1: Clone the Repository
 
