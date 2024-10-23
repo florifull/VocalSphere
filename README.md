@@ -54,7 +54,7 @@ Replace `<your-username>` with your GitHub username.
    - The `.env` file should look like this:
    ```plaintext
    MONGO_URI=mongodb+srv://<username>:<password>@vocalsphere.4hio8.mongodb.net/social_media_app?retryWrites=true&w=majority&appName=VocalSphere
-   JWT_SECRET_KEY=my_super_secret_key
+   SECRET_KEY=my_super_secret_key
    ```
    Make sure to replace `<username>` and `<password>` with your actual MongoDB user details.
 
